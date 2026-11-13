@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MESSAGE-APP</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <main>
+        <header class="page-header">
+            <div>
+                <p class="eyebrow">A little corner of the internet</p>
+                <h1>Message board</h1>
+            </div>
+            <form method="GET" action="/new">
+                <button type="submit">＋ Add a message</button>
+            </form>
+        </header>
+        <% if (messages.length > 0) { %>
+            <ul class="message-list">
+                <% messages.forEach((message) => { %>
+                    <li class="message-card">
+                        <p class="message-text"><%= message.text %></p>
+                        <div class="message-meta">
+                            <span>By <strong><%= message.user %></strong></span>
+                            <time><%= message.added.toLocaleString() %></time>
+                        </div>
+                    </li>
+                <% }); %>
+            </ul>
+        <% } else { %>
+            <p>No messages yet.</p>
+        <% } %>
+    </main>
+</body>
+</html>
